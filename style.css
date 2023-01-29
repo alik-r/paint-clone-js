@@ -17,6 +17,41 @@ body {
     box-shadow: 0 4px 6px rgba(50, 50, 90, 0.11), 0 1px 3px rgba(0, 0, 0, 0.11);
 }
 
+.tools {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+}
+
+.buttons {
+    width: 280px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttons .btn {
+    all: unset;
+    padding: 6px 12px;
+    width: 80px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(50, 50, 90, 0.11), 0 1px 3px rgba(0, 0, 0, 0.11);
+    background-color: #fafbfa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.buttons .btn:active {
+    transform: scale(0.98);
+}
+
 .tools .palette {
     display: flex;
     margin-top: 18px;
