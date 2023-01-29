@@ -23,7 +23,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 14px;
+    gap: 10px;
 }
 
 .buttons {
@@ -50,6 +50,10 @@ body {
 
 .buttons .btn:active {
     transform: scale(0.98);
+}
+
+.tools .thickness {
+    margin-top: 10px;
 }
 
 .tools .palette {
