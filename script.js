@@ -6,9 +6,19 @@ canvas.height = 600;
 
 const ctx = canvas.getContext('2d');
 ctx.lineWidth = 2;
-ctx.strokeStyle = '#111111';
+ctx.strokeStyle = 'black';
 
 let isPainting = false;
+
+// Color changing
+function updateColor(event) {
+    ctx.strokeStyle = event.target.style.backgroundColor;
+}
+
+const btns = document.querySelectorAll('.color');
+btns.forEach((btn) => {
+    btn.addEventListener('click', updateColor);
+})
 
 if(!canvas) {
     console.log('Error: Canvas not loaded');
