@@ -1,18 +1,28 @@
 'use strict';
 
+const WIDTH = 800;
+const HEIGHT = 600;
+
 const canvas = document.querySelector('canvas');
-canvas.width = 800;
-canvas.height = 600;
+canvas.width = WIDTH;
+canvas.height = HEIGHT;
 
 const ctx = canvas.getContext('2d');
+
+ctx.fillStyle = 'white';
+ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
 ctx.lineWidth = 2;
 ctx.strokeStyle = 'black';
+ctx.fillStyle = 'black';
 
 let isPainting = false;
+let isFilling = false;
 
 // Color changing
 function updateColor(event) {
     ctx.strokeStyle = event.target.style.backgroundColor;
+    ctx.fillStyle = event.target.style.backgroundColor;
 }
 
 const btns = document.querySelectorAll('.color');
@@ -27,6 +37,30 @@ function updateLineWidth(event) {
 
 const inpRange = document.querySelector('.thickness');
 inpRange.addEventListener('input', updateLineWidth);
+
+// Changing between Drawing and Fill modes
+function updateMode(event) {
+    if(isFilling) {
+        isFilling = false;
+        isPainting = true;
+        btnMode.textContent = 'Fill';
+    } else {
+        isFilling = true;
+        isPainting = false;
+        btnMode.textContent = 'Draw';
+    }
+}
+
+const btnMode = document.querySelector('.mode');
+btnMode.addEventListener('click', updateMode);
+
+
+// Filling canvas
+function fillCanvas() {
+    if(isFilling) {
+        ctx.fillRect(0, 0, WIDTH, HEIGHT);
+    }
+}
 
 if(!canvas) {
     console.log('Error: Canvas not loaded');
@@ -44,9 +78,11 @@ if(!canvas) {
         }
     });
 
-    canvas.addEventListener('mousedown', () => isPainting = true);
+    canvas.addEventListener('mousedown', () => isPainting = !isFilling);
 
     canvas.addEventListener('mouseup', () => isPainting = false);
 
     canvas.addEventListener('mouseleave', () => isPainting = false);
+
+    canvas.addEventListener('click', fillCanvas);
 }
