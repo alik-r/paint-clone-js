@@ -62,6 +62,18 @@ function fillCanvas() {
     }
 }
 
+// Saving the canvas
+function saveCanvas() {
+    const img = canvas.toDataURL('image/png');
+    const link = document.createElement('a');
+    link.href = img;
+    link.download = 'image';
+    link.click();
+}
+
+const btnSave = document.querySelector('.save');
+btnSave.addEventListener('click', saveCanvas);
+
 if(!canvas) {
     console.log('Error: Canvas not loaded');
 } else {
@@ -85,4 +97,6 @@ if(!canvas) {
     canvas.addEventListener('mouseleave', () => isPainting = false);
 
     canvas.addEventListener('click', fillCanvas);
+
+    canvas.addEventListener('contextmenu', event => event.preventDefault());
 }
