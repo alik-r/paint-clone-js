@@ -20,6 +20,14 @@ btns.forEach((btn) => {
     btn.addEventListener('click', updateColor);
 })
 
+// Changing line width (thickness)
+function updateLineWidth(event) {
+    ctx.lineWidth = event.target.value;
+}
+
+const inpRange = document.querySelector('.thickness');
+inpRange.addEventListener('input', updateLineWidth);
+
 if(!canvas) {
     console.log('Error: Canvas not loaded');
 } else {
